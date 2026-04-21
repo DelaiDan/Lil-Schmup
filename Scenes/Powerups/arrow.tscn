@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxjwg4qk52ghd"]
+
+[ext_resource type="Script" uid="uid://cbfx06hmyt706" path="res://Scripts/Powerups/powerup.gd" id="1_a7tip"]
+[ext_resource type="Texture2D" uid="uid://dxkvfup4cd8cw" path="res://Assets/Sprites/Player projectiles.png" id="2_a7tip"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo6xv"]
+atlas = ExtResource("2_a7tip")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e8hci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oo6xv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bhlhl"]
+radius = 14.0
+
+[node name="ArrowPickup" type="Area2D" groups=["ArrowPickup"]]
+script = ExtResource("1_a7tip")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_e8hci")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_bhlhl")

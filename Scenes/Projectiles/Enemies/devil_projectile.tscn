@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://cx8n2bbclus2c"]
+
+[ext_resource type="Texture2D" uid="uid://bwv53d86cgoa2" path="res://Assets/Sprites/enemy ships/Enemy Projectiles.png" id="1_kei0s"]
+[ext_resource type="Script" uid="uid://sy8wpqc67fl8" path="res://Scripts/Projectiles/Enemies/devil_projectile.gd" id="1_xpopk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpopk"]
+atlas = ExtResource("1_kei0s")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqvw5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpopk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xpopk"]
+radius = 4.5
+
+[node name="DevilProjectile" type="Area2D" groups=["EnemyProjectile"]]
+script = ExtResource("1_xpopk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_pqvw5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_xpopk")

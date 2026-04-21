@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://tk0vy7q7q2yd"]
+
+[ext_resource type="Script" uid="uid://c0fq2ckn73b3n" path="res://Scripts/Projectiles/Player/arrow_projectile.gd" id="1_eqx3b"]
+[ext_resource type="Texture2D" uid="uid://dxkvfup4cd8cw" path="res://Assets/Sprites/Player projectiles.png" id="2_1mwnr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yr2qt"]
+radius = 12.165525
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gid2f"]
+atlas = ExtResource("2_1mwnr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d4467"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gid2f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Arrow" type="Area2D" groups=["PlayerProjectile"]]
+script = ExtResource("1_eqx3b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yr2qt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_d4467")
+offset = Vector2(-1, 0)
