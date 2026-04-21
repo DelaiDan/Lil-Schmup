@@ -1,5 +1,7 @@
 extends Node2D
 
+signal wave_finished;
+
 @export var active: bool = true
 @export var enemy_prefab: PackedScene
 @export var quantity: int
@@ -12,6 +14,7 @@ extends Node2D
 @onready var collision_area: CollisionShape2D = $Area2D/CollisionShape2D
 
 var count: int = 0
+var active_enemies: int = 0
 
 func _on_ready() -> void:
 	timer.wait_time = delay;
@@ -19,11 +22,21 @@ func _on_ready() -> void:
 	collision_area.scale.y = area_size_y;
 
 func _on_timer_timeout() -> void:
-	if active && count < quantity:
-		var enemy = enemy_prefab.instantiate()
-		get_tree().current_scene.add_child(enemy)
-		enemy.global_position = _random_position_in_area()
+	if active and count < quantity:
+		var new_enemy = enemy_prefab.instantiate()
+		get_tree().current_scene.add_child(new_enemy)
+		new_enemy.global_position = _random_position_in_area()
+		new_enemy.tree_exited.connect(_on_enemy_destroyed)
 		count += 1
+		active_enemies += 1
+		if count >= quantity:
+			active = false
+
+func _on_enemy_destroyed() -> void:
+	active_enemies -= 1
+	if not active and active_enemies == 0:
+		wave_finished.emit()
+
 
 func _random_position_in_area() -> Vector2:
 	var shape = collision_area.shape as RectangleShape2D

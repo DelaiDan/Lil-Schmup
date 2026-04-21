@@ -1,7 +1,7 @@
 extends BasePlayerProjectile
 
 var speed: int = 800
-var fire_delay: float = 0.1
+var fire_delay: float = 0.09
 var damage: int = 1
 var pickup_score: int = 0
 

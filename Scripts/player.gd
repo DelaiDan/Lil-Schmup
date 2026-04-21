@@ -3,7 +3,6 @@ class_name Player
 
 @export var health: int = 10
 @export var speed: int = 100
-@export var fire_delay: float = 0.1
 
 const BAT = preload("uid://jrdvbcc73muc");
 const ARROW = preload("uid://tk0vy7q7q2yd");
@@ -16,6 +15,7 @@ const EXPLOSION = preload("uid://cq7d5u22l8liu");
 
 var invincible = false;
 var current_weapon: PackedScene = null
+var fire_delay: float = 0.1
 
 func _ready():
 	progress_bar.max_value = health
@@ -91,6 +91,7 @@ func hit(area: Area2D) -> void:
 		if health <= 0:
 			Global.lifes -= 1;
 			Global.score = clampi(Global.score-150, 0, Global.score);
+			set_current_weapon(BAT);
 			health = 10;
 			if Global.lifes < 0:
 				get_tree().reload_current_scene();

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpreoocsbcqqc"]
+[gd_scene load_steps=7 format=3 uid="uid://cpreoocsbcqqc"]
 
+[ext_resource type="Script" uid="uid://dy5dnhfb0dwoi" path="res://Scripts/world.gd" id="1_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://ror1dm5rac26" path="res://Assets/Sprites/Skybox Forest.png" id="1_a02cp"]
 [ext_resource type="Script" uid="uid://cr2ehtie5a67x" path="res://Scripts/background.gd" id="1_go701"]
 [ext_resource type="PackedScene" uid="uid://kub7r35tapqs" path="res://Scenes/player.tscn" id="3_5a7ea"]
@@ -7,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b0uuxsyn1na44" path="res://Scenes/Enemies/enemy_spawner.tscn" id="4_fo5ed"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_5ukr8")
 
 [node name="Background" type="Node2D" parent="."]
 script = ExtResource("1_go701")
@@ -24,27 +26,17 @@ speed = 300
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Devil" parent="Enemies" instance=ExtResource("4_8j60k")]
-position = Vector2(545, 109)
-
-[node name="Devil2" parent="Enemies" instance=ExtResource("4_8j60k")]
-position = Vector2(594, 215)
-
-[node name="Devil3" parent="Enemies" instance=ExtResource("4_8j60k")]
-position = Vector2(624, 152)
-
-[node name="Devil4" parent="Enemies" instance=ExtResource("4_8j60k")]
-position = Vector2(622, 90)
-
-[node name="Devil5" parent="Enemies" instance=ExtResource("4_8j60k")]
-position = Vector2(549, 254)
-
-[node name="Devil6" parent="Enemies" instance=ExtResource("4_8j60k")]
-position = Vector2(543, 166)
-
 [node name="EnemySpawner" parent="Enemies" instance=ExtResource("4_fo5ed")]
-position = Vector2(628, 188)
+position = Vector2(644, 188)
+active = false
 enemy_prefab = ExtResource("4_8j60k")
 quantity = 30
 delay = 0.5
 area_size_y = 30.0
+
+[node name="EnemySpawner2" parent="Enemies" instance=ExtResource("4_fo5ed")]
+position = Vector2(644, 188)
+active = false
+enemy_prefab = ExtResource("4_8j60k")
+quantity = 5
+delay = 1.0
