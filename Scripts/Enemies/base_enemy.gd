@@ -4,6 +4,7 @@ class_name BaseEnemy
 var speed_base: int = 100;
 var score_value_base: int = 10;
 var health_base: int = 10;
+var invincible_base = false;
 var animation: AnimationPlayer;
 
 var player: Player = Player.new();
@@ -30,13 +31,14 @@ func _process(delta: float) -> void:
 
 func hit(area: Area2D, animation_player: AnimationPlayer) -> void:
 	if area.is_in_group("PlayerProjectile"):
-		health_base -= area.get_damage();
-		if health_base > 0:
-			blink(animation_player);
-		elif health_base <= 0:
-			explode();
-			dropPowerup();
-			player.addScore(score_value_base);
+		if !invincible_base:
+			health_base -= area.get_damage();
+			if health_base > 0:
+				blink(animation_player);
+			elif health_base <= 0:
+				explode();
+				dropPowerup();
+				player.addScore(score_value_base);
 		area.queue_free();
 
 func explode():

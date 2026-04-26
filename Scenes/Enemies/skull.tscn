@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://bx1vmylq2bf30"]
+
+[ext_resource type="Script" uid="uid://clie1v474gotj" path="res://Scripts/Enemies/skull.gd" id="1_d7g62"]
+[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Enemies/hitflash.gdshader" id="1_rraxj"]
+[ext_resource type="Texture2D" uid="uid://xnwrv7pg64oj" path="res://Assets/Sprites/enemy ships/Skull head.png" id="2_d7g62"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vii1"]
+resource_local_to_scene = true
+shader = ExtResource("1_rraxj")
+shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
+shader_parameter/hit_flash_on = false
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fybee"]
+atlas = ExtResource("2_d7g62")
+region = Rect2(0, 0, 56, 70)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7vii1"]
+atlas = ExtResource("2_d7g62")
+region = Rect2(56, 0, 56, 70)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ip13o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fybee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7vii1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_dpb43"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fl06p"]
+resource_name = "hitflash"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/hit_flash_on")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dpb43"]
+_data = {
+&"RESET": SubResource("Animation_dpb43"),
+&"hitflash": SubResource("Animation_fl06p")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rdajn"]
+radius = 37.65634
+
+[node name="Skull" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_d7g62")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_7vii1")
+sprite_frames = SubResource("SpriteFrames_ip13o")
+
+[node name="HitFlash" type="AnimationPlayer" parent="AnimatedSprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_dpb43")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rdajn")
+
+[node name="FireDelayTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
