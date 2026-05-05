@@ -1,0 +1,107 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjveidd0utfxx"]
+
+[ext_resource type="Texture2D" uid="uid://20wjy5rw2idc" path="res://Assets/Sprites/hub elements.png" id="1_qwedj"]
+[ext_resource type="Script" uid="uid://cgpxt8o2lj77j" path="res://Scripts/Interface/life_label.gd" id="2_80qxb"]
+[ext_resource type="Script" uid="uid://b6ousbsdbf1p7" path="res://Scripts/Interface/score_label.gd" id="3_mamus"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lbcr5"]
+bg_color = Color(0.9114264, 0, 0.22295976, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nap5t"]
+bg_color = Color(0.31618002, 0.7063949, 0, 1)
+
+[node name="Hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.5
+offset_top = -160.0
+offset_right = 285.5
+offset_bottom = -110.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Health" type="Node2D" parent="Content"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Content/Health"]
+position = Vector2(319, 20)
+texture = ExtResource("1_qwedj")
+region_enabled = true
+region_rect = Rect2(73, 2, 70, 20)
+
+[node name="ProgressBar" type="ProgressBar" parent="Content/Health"]
+offset_left = 304.0
+offset_top = 12.0
+offset_right = 334.0
+offset_bottom = 28.0
+theme_override_styles/background = SubResource("StyleBoxFlat_lbcr5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nap5t")
+show_percentage = false
+
+[node name="Lifes" type="HBoxContainer" parent="Content"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 45.0
+offset_bottom = 11.5
+grow_vertical = 2
+alignment = 1
+
+[node name="Control" type="Control" parent="Content/Lifes"]
+clip_contents = true
+custom_minimum_size = Vector2(18, 19)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="Content/Lifes/Control"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_qwedj")
+centered = false
+region_enabled = true
+region_rect = Rect2(145, 72, 22, 24)
+region_filter_clip_enabled = true
+
+[node name="Label" type="Label" parent="Content/Lifes"]
+layout_mode = 2
+text = "x"
+
+[node name="LifeLabel" type="Label" parent="Content/Lifes"]
+layout_mode = 2
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_80qxb")
+
+[node name="ScoreLabel" type="Label" parent="Content"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_mamus")

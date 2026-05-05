@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://cr5ibjx0a6nu3"]
 
 [ext_resource type="Script" uid="uid://bdhlosad5s3ia" path="res://Scripts/Enemies/eyeball.gd" id="1_hw6x7"]
-[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Enemies/hitflash.gdshader" id="2_ndb7l"]
+[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Other/Shaders/hitflash.gdshader" id="2_ndb7l"]
 [ext_resource type="Texture2D" uid="uid://mlmxnteso52j" path="res://Assets/Sprites/enemy ships/Eyeball.png" id="3_mw8dx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_chsnj"]

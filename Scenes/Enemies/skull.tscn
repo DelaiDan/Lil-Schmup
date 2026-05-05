@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bx1vmylq2bf30"]
 
 [ext_resource type="Script" uid="uid://clie1v474gotj" path="res://Scripts/Enemies/skull.gd" id="1_d7g62"]
-[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Enemies/hitflash.gdshader" id="1_rraxj"]
+[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Other/Shaders/hitflash.gdshader" id="1_rraxj"]
 [ext_resource type="Texture2D" uid="uid://xnwrv7pg64oj" path="res://Assets/Sprites/enemy ships/Skull head.png" id="2_d7g62"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7vii1"]

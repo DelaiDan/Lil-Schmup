@@ -9,7 +9,7 @@ const ARROW = preload("uid://tk0vy7q7q2yd");
 
 const EXPLOSION = preload("uid://cq7d5u22l8liu");
 
-@onready var progress_bar := $CanvasLayer/Health/ProgressBar
+@onready var progress_bar := $CanvasLayer/Hud/Content/Health/ProgressBar
 @onready var fire_delay_timer := $FireDelayTimer
 @onready var invincibility_timer := $InvincibilityTimer
 

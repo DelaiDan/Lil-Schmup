@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bh3u10p1ur3hk"]
 
 [ext_resource type="Script" uid="uid://11dw4xevt2rs" path="res://Scripts/Enemies/devil.gd" id="1_3kcwo"]
-[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Enemies/hitflash.gdshader" id="2_fl06p"]
+[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Other/Shaders/hitflash.gdshader" id="2_fl06p"]
 [ext_resource type="Texture2D" uid="uid://c26wc5k8jihgm" path="res://Assets/Sprites/enemy ships/Devil.png" id="3_fl06p"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fl06p"]
