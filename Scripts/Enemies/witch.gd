@@ -1,15 +1,15 @@
 extends BaseEnemy
-class_name Devil
+class_name Witch
 
 @export var fire_delay: float = 3;
-@export var speed: int = 100;
-@export var score_value: int = 10;
+@export var speed: int = 150;
+@export var score_value: int = 15;
 @export var health: int = 5;
 
 @onready var fire_delay_timer := $FireDelayTimer
 @onready var animation_player := $AnimatedSprite2D/HitFlash
 
-const PROJECTILE = preload("uid://cx8n2bbclus2c");
+const PROJECTILE = preload("uid://demb0qljnlryb");
 
 func _init() -> void:
 	speed_base = speed;

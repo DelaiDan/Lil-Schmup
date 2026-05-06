@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://demb0qljnlryb"]
+
+[ext_resource type="Script" uid="uid://jynqd0kxcbyt" path="res://Scripts/Projectiles/Enemies/witch_projectile.gd" id="1_byn11"]
+[ext_resource type="Texture2D" uid="uid://bwv53d86cgoa2" path="res://Assets/Sprites/enemy ships/Enemy Projectiles.png" id="1_xod7l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_byn11"]
+atlas = ExtResource("1_xod7l")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uy451"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_byn11")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xod7l"]
+radius = 9.0
+height = 38.0
+
+[node name="WitchProjectile" type="Area2D" groups=["EnemyProjectile"]]
+script = ExtResource("1_byn11")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_uy451")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_xod7l")

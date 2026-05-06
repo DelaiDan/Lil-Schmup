@@ -3,7 +3,7 @@ class_name Eyeball
 
 @export var speed: int = 200;
 @export var score_value: int = 10;
-@export var health: int = 4;
+@export var health: int = 10;
 
 @onready var animation_player := $AnimatedSprite2D/HitFlash
 

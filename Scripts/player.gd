@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 @export var health: int = 10
-@export var speed: int = 100
+@export var speed: int = 300
 
 const BAT = preload("uid://jrdvbcc73muc");
 const ARROW = preload("uid://tk0vy7q7q2yd");

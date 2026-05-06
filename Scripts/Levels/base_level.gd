@@ -27,6 +27,8 @@ func _activate_stage(index: int) -> void:
 		if stage_text:
 			await get_tree().create_timer(1).timeout
 			stage_text.show_stage_clear()
+			await get_tree().create_timer(2).timeout
+			_next_level();
 		return
 
 	current_stage = children[index]
@@ -64,3 +66,6 @@ func _on_activator_finished() -> void:
 	print("Stage Finished")
 	level_stage += 1
 	_activate_stage(level_stage)
+	
+func _next_level() -> void:
+	pass;

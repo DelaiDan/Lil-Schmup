@@ -2,7 +2,7 @@ extends BasePlayerProjectile
 
 var speed: int = 600
 var fire_delay: float = 0.1
-var damage: int = 2
+var damage: int = 3
 var pickup_score: int = 100
 
 func _init() -> void:

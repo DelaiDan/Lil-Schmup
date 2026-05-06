@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://dlc2hscnha2r5"]
+
+[ext_resource type="PackedScene" uid="uid://kub7r35tapqs" path="res://Scenes/player.tscn" id="1_7qxk6"]
+[ext_resource type="Texture2D" uid="uid://ktpa0n5jffrl" path="res://Assets/Sprites/Skybox Pyramid outside.png" id="1_oylv5"]
+[ext_resource type="Script" uid="uid://cx0qjraqipoko" path="res://Scripts/Levels/level_2.gd" id="1_u40f0"]
+[ext_resource type="Shader" uid="uid://cmx0lc8fjt4r7" path="res://Scenes/Other/Shaders/background.gdshader" id="1_w2ac1"]
+[ext_resource type="PackedScene" uid="uid://ctvxg435tgtvs" path="res://Scenes/Interface/stage_start_text.tscn" id="2_ucdhh"]
+[ext_resource type="PackedScene" uid="uid://b0uuxsyn1na44" path="res://Scenes/Enemies/enemy_spawner.tscn" id="4_blpqv"]
+[ext_resource type="PackedScene" uid="uid://bh3u10p1ur3hk" path="res://Scenes/Enemies/devil.tscn" id="5_1jlnc"]
+[ext_resource type="PackedScene" uid="uid://b4ymeq8filphr" path="res://Scenes/Enemies/witch.tscn" id="5_u40f0"]
+[ext_resource type="PackedScene" uid="uid://cn41mkray2sgi" path="res://Scenes/Enemies/mummy.tscn" id="6_0x4y1"]
+[ext_resource type="PackedScene" uid="uid://c61yxvj35y3vk" path="res://Scenes/Other/Activator.tscn" id="7_0x4y1"]
+[ext_resource type="PackedScene" uid="uid://bx1vmylq2bf30" path="res://Scenes/Enemies/skull.tscn" id="8_uqiic"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovj6s"]
+resource_local_to_scene = true
+shader = ExtResource("1_w2ac1")
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_u40f0")
+level_number = "2"
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_ovj6s")
+offset_right = 477.61194
+offset_bottom = 240.0
+scale = Vector2(1.34, 1.34)
+texture = ExtResource("1_oylv5")
+stretch_mode = 1
+
+[node name="Player" parent="." instance=ExtResource("1_7qxk6")]
+position = Vector2(65, 160)
+speed = 300
+
+[node name="Stages" type="Node2D" parent="."]
+
+[node name="Stage1" type="Node2D" parent="Stages"]
+
+[node name="Witches" parent="Stages/Stage1" instance=ExtResource("4_blpqv")]
+position = Vector2(644, 173)
+active = false
+enemy_prefab = ExtResource("5_u40f0")
+quantity = 30
+delay = 0.5
+area_size_y = 30.0
+
+[node name="Mummies" parent="Stages/Stage1" instance=ExtResource("4_blpqv")]
+position = Vector2(644, 173)
+active = false
+enemy_prefab = ExtResource("6_0x4y1")
+quantity = 15
+delay = 1.0
+
+[node name="Stage2" type="Node2D" parent="Stages"]
+
+[node name="Activator" parent="Stages/Stage2" instance=ExtResource("7_0x4y1")]
+delay = 10.0
+
+[node name="Devils" parent="Stages/Stage2/Activator" instance=ExtResource("4_blpqv")]
+position = Vector2(644, 173)
+active = false
+enemy_prefab = ExtResource("5_1jlnc")
+quantity = 20
+delay = 0.5
+area_size_y = 30.0
+
+[node name="Mummies" parent="Stages/Stage2/Activator" instance=ExtResource("4_blpqv")]
+position = Vector2(644, 173)
+active = false
+enemy_prefab = ExtResource("6_0x4y1")
+quantity = 20
+delay = 1.0
+area_size_y = 20.0
+
+[node name="Stage3" type="Node2D" parent="Stages"]
+
+[node name="Skull" parent="Stages/Stage3" instance=ExtResource("4_blpqv")]
+position = Vector2(644, 173)
+active = false
+enemy_prefab = ExtResource("8_uqiic")
+quantity = 1
+delay = 5.0
+area_size_y = 1.0
+
+[node name="StageStartText" parent="." instance=ExtResource("2_ucdhh")]
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 320.0
+offset_top = 128.0
+offset_right = 320.0
+offset_bottom = 128.0

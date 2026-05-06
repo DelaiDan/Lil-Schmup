@@ -1,39 +1,34 @@
-[gd_scene load_steps=12 format=3 uid="uid://cr5ibjx0a6nu3"]
+[gd_scene load_steps=12 format=3 uid="uid://b4ymeq8filphr"]
 
-[ext_resource type="Script" uid="uid://bdhlosad5s3ia" path="res://Scripts/Enemies/eyeball.gd" id="1_hw6x7"]
-[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Other/Shaders/hitflash.gdshader" id="2_ndb7l"]
-[ext_resource type="Texture2D" uid="uid://mlmxnteso52j" path="res://Assets/Sprites/enemy ships/Eyeball.png" id="3_mw8dx"]
+[ext_resource type="Script" uid="uid://dasup4jf0cl4o" path="res://Scripts/Enemies/witch.gd" id="1_bt528"]
+[ext_resource type="Shader" uid="uid://bw6lmshfv8r6g" path="res://Scenes/Other/Shaders/hitflash.gdshader" id="1_kjmp7"]
+[ext_resource type="Texture2D" uid="uid://ncdo7vphb6dk" path="res://Assets/Sprites/enemy ships/Witch.png" id="1_sk8qu"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_chsnj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bt528"]
 resource_local_to_scene = true
-shader = ExtResource("2_ndb7l")
+shader = ExtResource("1_kjmp7")
 shader_parameter/hit_flash_color = Color(1, 1, 1, 1)
 shader_parameter/hit_flash_on = false
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5d7pp"]
-atlas = ExtResource("3_mw8dx")
-region = Rect2(0, 0, 36, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_kjmp7"]
+atlas = ExtResource("1_sk8qu")
+region = Rect2(0, 0, 48, 38)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_chsnj"]
-atlas = ExtResource("3_mw8dx")
-region = Rect2(36, 0, 36, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt528"]
+atlas = ExtResource("1_sk8qu")
+region = Rect2(48, 0, 48, 38)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_hw6x7"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_353se"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5d7pp")
+"texture": SubResource("AtlasTexture_kjmp7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_chsnj")
+"texture": SubResource("AtlasTexture_bt528")
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"hitflash",
 "speed": 5.0
 }]
 
@@ -75,17 +70,17 @@ _data = {
 &"hitflash": SubResource("Animation_fl06p")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rebq0"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_sk8qu"]
+radius = 16.0
 
-[node name="Eyeball" type="Area2D" groups=["Enemy"]]
-script = ExtResource("1_hw6x7")
-health = 7
+[node name="Witch" type="Area2D" groups=["Enemy"]]
+script = ExtResource("1_bt528")
+health = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_chsnj")
-sprite_frames = SubResource("SpriteFrames_hw6x7")
-autoplay = "default"
-offset = Vector2(7, -1)
+material = SubResource("ShaderMaterial_bt528")
+sprite_frames = SubResource("SpriteFrames_353se")
+frame_progress = 0.73722
 
 [node name="HitFlash" type="AnimationPlayer" parent="AnimatedSprite2D"]
 libraries = {
@@ -93,7 +88,7 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_rebq0")
+shape = SubResource("CircleShape2D_sk8qu")
 
 [node name="FireDelayTimer" type="Timer" parent="."]
 one_shot = true
