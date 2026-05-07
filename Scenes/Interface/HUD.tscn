@@ -34,24 +34,6 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Health" type="Node2D" parent="Content"]
-visible = false
-
-[node name="Sprite2D" type="Sprite2D" parent="Content/Health"]
-position = Vector2(319, 20)
-texture = ExtResource("1_qwedj")
-region_enabled = true
-region_rect = Rect2(73, 2, 70, 20)
-
-[node name="ProgressBar" type="ProgressBar" parent="Content/Health"]
-offset_left = 304.0
-offset_top = 12.0
-offset_right = 334.0
-offset_bottom = 28.0
-theme_override_styles/background = SubResource("StyleBoxFlat_lbcr5")
-theme_override_styles/fill = SubResource("StyleBoxFlat_nap5t")
-show_percentage = false
-
 [node name="Lifes" type="HBoxContainer" parent="Content"]
 layout_mode = 1
 anchors_preset = 4
@@ -92,17 +74,67 @@ script = ExtResource("2_80qxb")
 
 [node name="ScoreLabel" type="Label" parent="Content"]
 layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_mamus")
+
+[node name="Health" type="Control" parent="Content"]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -35.0
+offset_top = -10.0
+offset_right = 35.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-script = ExtResource("3_mamus")
+
+[node name="Control" type="Control" parent="Content/Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -10.0
+offset_right = 35.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Content/Health/Control"]
+position = Vector2(35, 10)
+texture = ExtResource("1_qwedj")
+region_enabled = true
+region_rect = Rect2(73, 2, 70, 20)
+
+[node name="ProgressBar" type="ProgressBar" parent="Content/Health"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.0
+offset_top = -8.0
+offset_right = 15.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_lbcr5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nap5t")
+show_percentage = false

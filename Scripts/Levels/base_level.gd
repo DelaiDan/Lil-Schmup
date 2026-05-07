@@ -6,9 +6,9 @@ signal next_stage(node: Node, stage: int)
 @export var level_number: String = "1"
 @export var level_stage: int = 0
 @export var wave_stage: int = 0
+@export var next_scene: String = ""
 
 var current_stage: Node = null
-var next_scene = null
 
 @onready var stages: Node2D = $Stages
 @onready var player: Player = $Player
@@ -71,4 +71,4 @@ func _on_activator_finished() -> void:
 	_activate_stage(level_stage)
 	
 func _next_level(scene) -> void:
-	transition.transition_to(scene)
+	transition._transition_to(scene)

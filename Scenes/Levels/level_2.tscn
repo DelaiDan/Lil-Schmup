@@ -20,6 +20,7 @@ shader = ExtResource("1_w2ac1")
 [node name="Level2" type="Node2D"]
 script = ExtResource("1_u40f0")
 level_number = "2"
+next_scene = "uid://bt1g08ixspwb0"
 
 [node name="Background" type="Node2D" parent="."]
 
@@ -44,7 +45,7 @@ position = Vector2(644, 173)
 active = false
 enemy_prefab = ExtResource("5_u40f0")
 quantity = 30
-delay = 0.5
+delay = 1.5
 area_size_y = 30.0
 
 [node name="Mummies" parent="Stages/Stage1" instance=ExtResource("4_blpqv")]
@@ -52,7 +53,7 @@ position = Vector2(644, 173)
 active = false
 enemy_prefab = ExtResource("6_0x4y1")
 quantity = 15
-delay = 1.0
+delay = 2.0
 
 [node name="Stage2" type="Node2D" parent="Stages"]
 
@@ -64,7 +65,7 @@ position = Vector2(644, 173)
 active = false
 enemy_prefab = ExtResource("5_1jlnc")
 quantity = 20
-delay = 0.5
+delay = 1.0
 area_size_y = 30.0
 
 [node name="Mummies" parent="Stages/Stage2/Activator" instance=ExtResource("4_blpqv")]
