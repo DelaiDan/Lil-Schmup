@@ -6,10 +6,13 @@ signal next_stage(node: Node, stage: int)
 @export var level_number: String = "1"
 @export var level_stage: int = 0
 @export var wave_stage: int = 0
+
 var current_stage: Node = null
+var next_scene = null
 
 @onready var stages: Node2D = $Stages
 @onready var player: Player = $Player
+@onready var transition := $StageTransition/SceneTransition
 
 func _ready() -> void:
 	var stage_text = get_node_or_null("StageStartText")
@@ -28,7 +31,7 @@ func _activate_stage(index: int) -> void:
 			await get_tree().create_timer(1).timeout
 			stage_text.show_stage_clear()
 			await get_tree().create_timer(2).timeout
-			_next_level();
+			_next_level(next_scene);
 		return
 
 	current_stage = children[index]
@@ -67,5 +70,5 @@ func _on_activator_finished() -> void:
 	level_stage += 1
 	_activate_stage(level_stage)
 	
-func _next_level() -> void:
-	pass;
+func _next_level(scene) -> void:
+	transition.transition_to(scene)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cpreoocsbcqqc"]
+[gd_scene load_steps=13 format=3 uid="uid://cpreoocsbcqqc"]
 
 [ext_resource type="Script" uid="uid://dy5dnhfb0dwoi" path="res://Scripts/Levels/level_1.gd" id="1_5ukr8"]
 [ext_resource type="Texture2D" uid="uid://ror1dm5rac26" path="res://Assets/Sprites/Skybox Forest.png" id="1_a02cp"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cr5ibjx0a6nu3" path="res://Scenes/Enemies/eyeball.tscn" id="7_o06y3"]
 [ext_resource type="PackedScene" uid="uid://c61yxvj35y3vk" path="res://Scenes/Other/Activator.tscn" id="8_k7acu"]
 [ext_resource type="PackedScene" uid="uid://ctvxg435tgtvs" path="res://Scenes/Interface/stage_start_text.tscn" id="10_stgtxt"]
+[ext_resource type="PackedScene" uid="uid://ct0kvav4ohlpb" path="res://Scenes/Interface/scene_transition.tscn" id="11_hwvp3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ikia7"]
 resource_local_to_scene = true
@@ -38,7 +39,7 @@ position = Vector2(65, 160)
 [node name="Stage1" type="Node2D" parent="Stages"]
 
 [node name="Devils" parent="Stages/Stage1" instance=ExtResource("4_fo5ed")]
-position = Vector2(644, 173)
+position = Vector2(648, 160)
 active = false
 enemy_prefab = ExtResource("4_8j60k")
 quantity = 10
@@ -48,7 +49,7 @@ area_size_y = 30.0
 [node name="Stage2" type="Node2D" parent="Stages"]
 
 [node name="Eyeballs" parent="Stages/Stage2" instance=ExtResource("4_fo5ed")]
-position = Vector2(1288, 346)
+position = Vector2(648, 160)
 active = false
 enemy_prefab = ExtResource("7_o06y3")
 quantity = 10
@@ -61,7 +62,7 @@ area_size_y = 20.0
 delay = 10.0
 
 [node name="Devils" parent="Stages/Stage3/Activator" instance=ExtResource("4_fo5ed")]
-position = Vector2(644, 173)
+position = Vector2(648, 160)
 active = false
 enemy_prefab = ExtResource("4_8j60k")
 quantity = 10
@@ -69,7 +70,7 @@ delay = 0.5
 area_size_y = 30.0
 
 [node name="Eyeballs" parent="Stages/Stage3/Activator" instance=ExtResource("4_fo5ed")]
-position = Vector2(644, 173)
+position = Vector2(648, 160)
 active = false
 enemy_prefab = ExtResource("7_o06y3")
 quantity = 10
@@ -86,3 +87,12 @@ offset_left = 320.0
 offset_top = 128.0
 offset_right = 320.0
 offset_bottom = 128.0
+
+[node name="StageTransition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 328.0
+
+[node name="SceneTransition" parent="StageTransition" instance=ExtResource("11_hwvp3")]
+layout_mode = 1

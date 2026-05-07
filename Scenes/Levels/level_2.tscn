@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dlc2hscnha2r5"]
+[gd_scene load_steps=14 format=3 uid="uid://dlc2hscnha2r5"]
 
 [ext_resource type="PackedScene" uid="uid://kub7r35tapqs" path="res://Scenes/player.tscn" id="1_7qxk6"]
 [ext_resource type="Texture2D" uid="uid://ktpa0n5jffrl" path="res://Assets/Sprites/Skybox Pyramid outside.png" id="1_oylv5"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cn41mkray2sgi" path="res://Scenes/Enemies/mummy.tscn" id="6_0x4y1"]
 [ext_resource type="PackedScene" uid="uid://c61yxvj35y3vk" path="res://Scenes/Other/Activator.tscn" id="7_0x4y1"]
 [ext_resource type="PackedScene" uid="uid://bx1vmylq2bf30" path="res://Scenes/Enemies/skull.tscn" id="8_uqiic"]
+[ext_resource type="PackedScene" uid="uid://ct0kvav4ohlpb" path="res://Scenes/Interface/scene_transition.tscn" id="12_0x4y1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ovj6s"]
 resource_local_to_scene = true
@@ -33,7 +34,6 @@ stretch_mode = 1
 
 [node name="Player" parent="." instance=ExtResource("1_7qxk6")]
 position = Vector2(65, 160)
-speed = 300
 
 [node name="Stages" type="Node2D" parent="."]
 
@@ -93,3 +93,12 @@ offset_left = 320.0
 offset_top = 128.0
 offset_right = 320.0
 offset_bottom = 128.0
+
+[node name="StageTransition" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 328.0
+
+[node name="SceneTransition" parent="StageTransition" instance=ExtResource("12_0x4y1")]
+layout_mode = 1

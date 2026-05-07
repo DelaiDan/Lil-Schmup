@@ -15,19 +15,8 @@ const ARROW_PICKUP = preload("uid://dxjwg4qk52ghd");
 const EXPLOSION = preload("uid://cq7d5u22l8liu");
 
 func _process(delta: float) -> void:
-	var canvas_transform = get_viewport().get_canvas_transform()
-	var screen_rect = get_viewport_rect()
-	var world_top_left = canvas_transform.affine_inverse() * screen_rect.position
-	var world_bottom_right = canvas_transform.affine_inverse() * (screen_rect.position + screen_rect.size)
-	
 	move(delta);
 	shoot(delta);
-	
-	position.y += sin(position.x * delta) * 0.5
-	position.y = clamp(position.y, world_top_left.y, world_bottom_right.y)
-
-	if global_position.x < world_top_left.x:
-		queue_free()
 
 func hit(area: Area2D, animation_player: AnimationPlayer) -> void:
 	if area.is_in_group("PlayerProjectile"):
@@ -70,3 +59,14 @@ func move(delta: float) -> void:
 	
 func shoot(delta: float) -> void:
 	pass;
+
+func return_world_coordinates() -> Dictionary:
+	var canvas_transform = get_viewport().get_canvas_transform()
+	var screen_rect = get_viewport_rect()
+	var world_top_left = canvas_transform.affine_inverse() * screen_rect.position
+	var world_bottom_right = canvas_transform.affine_inverse() * (screen_rect.position + screen_rect.size)
+	
+	return {
+		"top_left": world_top_left,
+		"bottom_right": world_bottom_right
+	}
