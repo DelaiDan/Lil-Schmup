@@ -18,6 +18,7 @@ shader = ExtResource("3_0fj1v")
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_5ukr8")
+level_stage = 2
 next_scene = "uid://dlc2hscnha2r5"
 
 [node name="Background" type="Node2D" parent="."]
@@ -93,7 +94,7 @@ offset_bottom = 128.0
 layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
-offset_bottom = 328.0
+offset_bottom = 320.0
 
 [node name="SceneTransition" parent="StageTransition" instance=ExtResource("11_hwvp3")]
 layout_mode = 1

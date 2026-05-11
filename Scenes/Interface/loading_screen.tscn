@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://byg83aj0kcm7p"]
+
+[ext_resource type="Script" uid="uid://brwdo17udcdx6" path="res://Scripts/Interface/loading_screen.gd" id="1_fxc5a"]
+[ext_resource type="PackedScene" uid="uid://ct0kvav4ohlpb" path="res://Scenes/Interface/scene_transition.tscn" id="2_ff34f"]
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fxc5a")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.5
+offset_top = 90.0
+offset_right = 37.5
+offset_bottom = 113.0
+grow_horizontal = 2
+text = "Loading..."
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -13.5
+offset_right = 106.0
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+step = 1.0
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_ff34f")]
+layout_mode = 1

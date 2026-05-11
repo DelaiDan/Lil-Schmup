@@ -31,7 +31,7 @@ func _activate_stage(index: int) -> void:
 			await get_tree().create_timer(1).timeout
 			stage_text.show_stage_clear()
 			await get_tree().create_timer(2).timeout
-			_next_level(next_scene);
+			_next_level();
 		return
 
 	current_stage = children[index]
@@ -70,5 +70,6 @@ func _on_activator_finished() -> void:
 	level_stage += 1
 	_activate_stage(level_stage)
 	
-func _next_level(scene) -> void:
-	transition._transition_to(scene)
+func _next_level() -> void:
+	Global.next_scene = next_scene
+	transition._transition_to_loading()

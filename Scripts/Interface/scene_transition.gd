@@ -9,3 +9,8 @@ func _transition_to(scene) -> void:
 	anim_player.play("Fade")
 	await anim_player.animation_finished
 	get_tree().change_scene_to_file(scene)
+	
+func _transition_to_loading() -> void:
+	anim_player.play("Fade")
+	await anim_player.animation_finished
+	get_tree().change_scene_to_packed(Global.loading_screen)

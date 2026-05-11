@@ -20,7 +20,7 @@ var fire_delay: float = 0.1
 func _ready():
 	progress_bar.max_value = health
 	progress_bar.value = health
-	set_current_weapon(BAT);
+	set_current_weapon(Global.current_weapon);
 
 func _process(delta: float) -> void:
 	var move = Input.get_vector("left", "right", "up", "down");
@@ -108,6 +108,8 @@ func blink():
 	
 func set_current_weapon(weapon: PackedScene):
 	current_weapon = weapon;
+	Global.current_weapon = weapon;
+
 	var weapon_node = weapon.instantiate();
 	fire_delay = weapon_node.call("get_fire_delay");
 	addScore(weapon_node.call("get_pickup_score"));
